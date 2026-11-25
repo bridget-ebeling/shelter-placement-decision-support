@@ -1,5 +1,5 @@
 # shelter-placement-decision-support
-Locally deployed deterministic decision-support system for structured shelter intake matching.
+Locally run, privacy-focused decision-support tool for matching shelter animals to rescues. Built with AI assistance
 # Internal Shelter Placement Decision-Support System
 
 ## Overview
