@@ -1,101 +1,68 @@
-# shelter-placement-decision-support
-Locally run, privacy-focused decision-support tool for matching shelter animals to rescues. Built with AI assistance
-# Internal Shelter Placement Decision-Support System
+# Shelter Placement Decision-Support System
+
+Locally run, privacy-focused decision-support tool for matching shelter animals to rescues. Built with AI assistance.
 
 ## Overview
-This project is a locally deployed decision-support system designed to support animal placement workflows within a county shelter environment.
 
-The system consolidates fragmented intake criteria from multiple no-kill shelters into a structured, searchable interface. It reduces manual cross-referencing, shortens placement cycles, and increases visibility into viable transfer options—particularly for medically or behaviorally complex cases.
+This tool helps a county shelter find rescue placements for its animals. It combines intake criteria from multiple no-kill rescues into one searchable interface, so staff don't have to cross-check separate spreadsheets by hand. It also makes it easier to find rescues that can take medically or behaviorally complex animals.
 
-**Operational use:** In continuous use since **Dec 4, 2025**.
+**Deployed:** Dec 4, 2025
 
----
+## The Problem
 
-## Problem Context
-The shelter previously relied on separate spreadsheets containing intake criteria for no-kill partners across species (dogs, cats, horses, etc.). Determining placement eligibility required manual comparison of:
+The shelter kept each rescue partner's intake criteria in separate spreadsheets, covering dogs, cats, horses and other species. To find a placement, staff had to compare an animal against every list by hand, checking:
 
-- Species / Breed
+- Species / breed
 - Age
 - Size
 - Sex
 - Medical needs
-- Behavioral considerations
-- Capacity limitations
-- Multi-animal constraints (bonded pairs and litters)
+- Behavior
+- Rescue capacity
+- Bonded pairs and litters
 
-Transport feasibility is coordinated separately through the shelter’s established network (including airport/pilot partnerships), which occurs after eligibility determination.
+Transport is arranged separately through the shelter's existing network (including airport and pilot partners), after a match is found.
 
-This fragmented workflow increased administrative overhead and delayed placement decisions.
+## What It Does
 
----
+- Combines the partners' different spreadsheet formats into one consistent set of fields
+- Turns loosely written intake notes into criteria that can be filtered
+- Handles individual animals, bonded pairs, and litters
+- Shows which rescues an animal qualifies for, based on clear rules, so staff can see why each match was made
 
-## Solution
-I designed and implemented a structured, deterministic filtering system that:
+## How AI Was Used
 
-- Normalizes heterogeneous spreadsheet formats into consistent schema fields
-- Converts semi-structured intake notes into filterable attributes
-- Supports matching for **individual animals, bonded pairs, and litters**
-- Returns **rule-based, explainable** eligibility results aligned with shelter intake policies
+I used AI tools during development to:
 
-The system centralizes eligibility logic into a single interface, reducing manual comparison and improving operational efficiency. Transport logistics are coordinated alongside the system using existing shelter networks.
+- Help design the data structure
+- Standardize inconsistent terms across partner spreadsheets
+- Sort loosely written intake notes into consistent categories
+- Build and revise prototypes quickly
 
----
+Placement decisions are always made by shelter staff, not the tool.
 
-## AI Utilization
-AI tools were leveraged during development to accelerate iteration and data normalization by:
+## How It's Built
 
-- Assisting with schema design
-- Standardizing inconsistent terminology across partner shelters
-- Structuring loosely formatted intake notes into consistent categories
-- Supporting rapid prototyping under limited technical resources
+The tool runs locally as a single HTML/JavaScript file with the data built in. I chose this so that:
 
-AI functioned as a development accelerator and structuring assistant. Final placement decisions remain human-directed and policy-based.
+- It needs no servers, accounts, or internet connection
+- Shelter and partner data stay on the shelter's own computer
+- It's simple to set up and keep running with limited IT support
 
----
+The matching follows fixed rules, so the same input always gives the same result.
 
-## Implementation Model
-The system is implemented as a locally executed **HTML/JavaScript** application with embedded structured data.
+## Tradeoffs
 
-This architecture was intentionally chosen to:
+| Choice | Benefit | Cost |
+|---|---|---|
+| Runs locally | Simple, private, no infrastructure | Can't be shared across locations easily |
+| Fixed-rule matching | Transparent and easy to check | Doesn't learn or rank by likely success |
+| Modeling pairs and litters | Fewer matches that fall apart later | More setup work up front |
 
-- Eliminate reliance on external infrastructure
-- Maintain data control within the shelter environment
-- Ensure reliability in a resource-constrained setting
-- Simplify deployment and maintenance
+## Data & Privacy
 
-Matching logic is deterministic to support transparency and traceability.
-
----
-
-## Design Decisions & Tradeoffs
-
-### Local Deployment
-- **Pros:** Simplicity, data control, low infrastructure overhead
-- **Tradeoff:** Limited remote scalability
-
-### Deterministic Matching
-- **Pros:** Transparency, traceability, policy alignment
-- **Tradeoff:** Less adaptive than predictive ranking models
-
-### Structured Intake Modeling (Pairs/Litters)
-- **Pros:** Reduces false-positive matches and downstream coordination failures
-- **Tradeoff:** Requires upfront normalization effort
-
----
-
-## Impact
-- Reduced manual spreadsheet cross-referencing
-- Improved placement visibility for complex cases
-- Increased operational efficiency in daily workflow
-- Supported higher-quality matching prior to transport coordination
-
----
-
-## Notes on Data & Privacy
-This repository contains **documentation only** and does **not** include shelter spreadsheets, partner criteria datasets, transport lists, or any sensitive operational information.
-
----
+This repository contains documentation only. It does not include shelter spreadsheets, partner criteria, transport lists, or any other sensitive information.
 
 ## Contact
-If you’d like additional context (architecture notes, demo screenshots, or a sanitized example dataset), feel free to reach out via GitHub or LinkedIn.
 
+For more detail or a sanitized demo, reach out through GitHub or LinkedIn.
